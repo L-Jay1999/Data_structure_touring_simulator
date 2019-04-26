@@ -805,6 +805,8 @@ inline void Traveller::UpdateState(const CityGraph &graph, Time now)
 
 inline void Traveller::InitState(const CityGraph &graph)
 {
+  if (position_pathnode_ == -2)
+    return;
   auto path_begin = touring_path_.cbegin();
   Route route = graph.GetRoute((*path_begin).former_city, (*path_begin).current_city, (*path_begin).kth_way);
   int left_hour = route.start_time.hour_diff(init_time_);
