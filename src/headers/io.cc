@@ -838,7 +838,7 @@ void PrintRoutes(const CityGraph &graph, const IDMap &id_map)
                       << cityi << wrap[cityi.size() > comp.size()]
                       << cityj << wrap[cityj.size() > comp.size()]
                       << method << '\t';
-            RouteShow(route.start_time, route.end_time);
+            std::cout << RouteShow(route.start_time, route.end_time);
             std::cout << route.price << '\t' << std::endl;
         }
     }
