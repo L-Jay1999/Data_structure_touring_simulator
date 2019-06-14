@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1166</width>
-    <height>694</height>
+    <width>1173</width>
+    <height>701</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1147,20 +1147,160 @@ border-color: rgb(0, 0, 0);</string>
        <string notr="true">background-color: rgb(255, 255, 255);
 </string>
       </property>
-      <layout class="QGridLayout" name="gridLayout_7" columnstretch="9,1">
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <item row="2" column="1">
+      <layout class="QGridLayout" name="gridLayout_12">
+       <item row="6" column="2">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>333</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="1" rowspan="7">
+        <widget class="MyLabel" name="MapLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>900</width>
+           <height>650</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>1920</width>
+           <height>1080</height>
+          </size>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="toolTipDuration">
+          <number>2000</number>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::AutoText</enum>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../material/material.qrc">:/image/map.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QPushButton" name="OrderPageToMenuButton">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(235, 235, 235);
+border-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="text">
+          <string>返回主菜单</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2" colspan="2">
+        <widget class="QTextBrowser" name="transfercityBrowser">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>590</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>590</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;途径城市：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="OrderPathButton">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(235, 235, 235);
+border-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="text">
+          <string>开始</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QWidget" name="strategy_widget" native="true">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="strategy_label">
+            <property name="text">
+             <string>策略:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="strategy_comboBox">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(253, 253, 253);
+border-color: rgb(0, 0, 0);</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>最少金钱</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>最少时间</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>限制时间内最少金钱</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="2">
         <widget class="QWidget" name="limit_time_widget" native="true">
          <property name="styleSheet">
           <string notr="true"/>
@@ -1328,31 +1468,7 @@ border-color: rgb(0, 0, 0);</string>
          </layout>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="OrderPathButton">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(235, 235, 235);
-border-color: rgb(0, 0, 0);</string>
-         </property>
-         <property name="text">
-          <string>开始</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>333</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1">
+       <item row="2" column="2">
         <widget class="QWidget" name="init_time_widget" native="true">
          <property name="styleSheet">
           <string notr="true"/>
@@ -1503,106 +1619,49 @@ border-color: rgb(0, 0, 0);</string>
          </layout>
         </widget>
        </item>
-       <item row="0" column="0" rowspan="6">
-        <widget class="MyLabel" name="MapLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>900</width>
-           <height>650</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>1920</width>
-           <height>1080</height>
-          </size>
-         </property>
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="toolTipDuration">
-          <number>2000</number>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::AutoText</enum>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="../material/material.qrc">:/image/map.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QPushButton" name="OrderPageToMenuButton">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(235, 235, 235);
-border-color: rgb(0, 0, 0);</string>
-         </property>
-         <property name="text">
-          <string>返回主菜单</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QWidget" name="strategy_widget" native="true">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QLabel" name="strategy_label">
+       <item row="5" column="2">
+        <widget class="QWidget" name="city_widget" native="true">
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="city_label1">
             <property name="text">
-             <string>策略:</string>
+             <string>起始城市：</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QComboBox" name="strategy_comboBox">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(253, 253, 253);
-border-color: rgb(0, 0, 0);</string>
+          <item row="0" column="1">
+           <widget class="QLabel" name="city_label3">
+            <property name="text">
+             <string/>
             </property>
-            <item>
-             <property name="text">
-              <string>最少金钱</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>最少时间</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>限制时间内最少金钱</string>
-             </property>
-            </item>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="city_label2">
+            <property name="text">
+             <string>目的城市：</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="city_label4">
+            <property name="text">
+             <string/>
+            </property>
            </widget>
           </item>
          </layout>
         </widget>
        </item>
       </layout>
+      <zorder>MapLabel</zorder>
+      <zorder>strategy_widget</zorder>
+      <zorder>init_time_widget</zorder>
+      <zorder>limit_time_widget</zorder>
+      <zorder>OrderPathButton</zorder>
+      <zorder>city_widget</zorder>
+      <zorder>OrderPageToMenuButton</zorder>
+      <zorder>transfercityBrowser</zorder>
      </widget>
      <widget class="QWidget" name="SimulatePage">
       <property name="styleSheet">
