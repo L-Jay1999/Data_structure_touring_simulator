@@ -65,6 +65,12 @@ void MyLabel::mousePressEvent(QMouseEvent *ev)
             has_mark_transfer[i] = false;
             mark_transfer[i]->hide();
             delete_transfer_city(i);
+            QString temp = "途经城市：";
+            for(auto city : transfer_city)
+            {
+                temp += QString::fromStdString(idmap->getCityStr(city)) + " ";
+            }
+            transfercityBrowser_->setText(temp);
         }
     }
     else if (ev->button() == Qt::RightButton)
@@ -100,6 +106,7 @@ void MyLabel::origin_action_triggered()
     mark_origin->show();
 
     where_mark_origin = current_set_city;
+    citylabel1_->setText(QString::fromStdString(idmap->getCityStr(current_set_city)));
 }
 
 void MyLabel::destination_action_triggered()
@@ -117,6 +124,7 @@ void MyLabel::destination_action_triggered()
     mark_destination->show();
 
     where_mark_destination = current_set_city;
+    citylabel2_->setText(QString::fromStdString(idmap->getCityStr(current_set_city)));
 }
 
 void MyLabel::transfer_action_triggered()
@@ -136,6 +144,12 @@ void MyLabel::transfer_action_triggered()
     transfer_city.push_back(current_set_city);
     has_mark_transfer[current_set_city] = true;
 
+    QString temp = "途经城市：";
+    for(auto city : transfer_city)
+    {
+        temp += QString::fromStdString(idmap->getCityStr(city)) + " ";
+    }
+    transfercityBrowser_->setText(temp);
     /*for(auto city : transfer_city)
     {
         qDebug() << city;
@@ -173,9 +187,12 @@ std::vector<int> MyLabel::getplan()
     return temp;
 }
 
-void MyLabel::initializMyLabel(IDMap *a)
+void MyLabel::initializMyLabel(IDMap *a, QLabel *label1, QLabel *label2, QTextBrowser *browser)
 {
     idmap = a;
+    citylabel1_ = label1;
+    citylabel2_ = label2;
+    transfercityBrowser_ = browser;
     current_qsize_ = origin_qsize_ = this->size();
 
     rightbutton_menu = new QMenu(this);

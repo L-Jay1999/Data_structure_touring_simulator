@@ -6,6 +6,7 @@
 #include <QAction>
 #include <QLabel>
 #include <QResizeEvent>
+#include <QTextBrowser>
 #include <utility>
 
 #include <../headers/id_map.h>
@@ -17,7 +18,7 @@ class MyLabel : public QLabel
     Q_OBJECT
 public:
     explicit MyLabel(QWidget *parent = 0);
-    void initializMyLabel(IDMap *a);
+    void initializMyLabel(IDMap *a, QLabel *label1, QLabel *label2, QTextBrowser *browser);
     std::vector <int> getplan();
     void setOriginPixmap();
     bool hasOriginPixmap();
@@ -55,9 +56,7 @@ private:
     int current_set_city;
     std::deque <int> transfer_city;
 
-
     std::pair<int, int> city_pos_[31];      //在图片大小为900x650情况下
-
     double origin_col_map_[7];
     double col_map_[7];
     double origin_row_map_[5];
@@ -75,6 +74,10 @@ private:
     void delete_transfer_city(int i);
 
     QPixmap origin_pixmap;
+
+    QLabel *citylabel1_;
+    QLabel *citylabel2_;
+    QTextBrowser *transfercityBrowser_;
 };
 
 #endif // MYLABEL_H

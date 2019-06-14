@@ -28,7 +28,8 @@ Widget::Widget(QWidget *parent) : QWidget(parent),
     ui->Path_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->stackedWidget->setCurrentWidget(ui->LoginPage);
     //qDebug() << &idmap_widget << endl;
-    ui->MapLabel->initializMyLabel(&idmap_widget);
+     ui->transfercityBrowser->setStyleSheet("QTextBrowser{border-width:0;border-style:outset}");
+    ui->MapLabel->initializMyLabel(&idmap_widget, ui->city_label3, ui->city_label4, ui->transfercityBrowser);
     simulator.initialize(ui->dayLCDdiaplay, ui->hourLCDdisplay, ui->MapSimulate, ui->pos_label, &idmap_widget, &citygraph_widget, &traveller_widget);
 }
 

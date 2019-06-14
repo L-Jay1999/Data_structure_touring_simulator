@@ -38,8 +38,7 @@ SOURCES += \
     qt_headers/widget.cpp \
     qt_headers/mylabel.cpp \
     qt_headers/mymap.cpp \
-    qt_headers/simulator.cpp \
-    headers/simulation.cc
+    qt_headers/simulator.cpp
 
 HEADERS += \
     qt_headers/time_table_widget_item.h \
@@ -55,8 +54,7 @@ HEADERS += \
     headers/user_type.h \
     qt_headers/mylabel.h \
     qt_headers/simulator.h \
-    qt_headers/mymap.h \
-    headers/simulation.h
+    qt_headers/mymap.h
 
 FORMS += \
     qt_headers/widget.ui
