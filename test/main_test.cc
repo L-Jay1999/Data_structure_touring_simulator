@@ -32,7 +32,7 @@ int main()
 	int account_name_line = Welcome(traveller);
 	ClearScreen();
 
-	traveller.LoadData(account_name_line, city_graph);
+	traveller.loadData(account_name_line, city_graph);
 	setTravellerPtr(&traveller);
 	setSignalHandlers();
 	while (1)
@@ -48,7 +48,7 @@ int main()
 			// traveller.ShowPlan();
 			strategy = InputStrategy(init_time, limit_time);
 
-			path = traveller.SchedulePath(city_graph, strategy, init_time, limit_time);
+			path = traveller.schedulePath(city_graph, strategy, init_time, limit_time);
 
 			// path.Show();
 			PrintPath(city_graph, id_map, path);
@@ -65,7 +65,7 @@ int main()
 			PrintRoutes(city_graph, id_map);
 			break;
 		case SIMULATE:
-			traveller.InitState(city_graph);
+			traveller.initState(city_graph);
 			InitializeSimulator(traveller.get_init_time());
 			Simulate(traveller, city_graph, id_map);
 			break;

@@ -126,18 +126,18 @@ void Simulate(Traveller &traveller, const CityGraph &city_graph, const IDMap &id
         Path path = traveller.get_path();
         int position = traveller.get_position();
 
-        City_id current_city = path.GetNode(position).former_city;
-        City_id next_city = path.GetNode(position).current_city;
-        int route_index = path.GetNode(position).kth_way;
-        // Trans_id transport_type = city_graph.GetRoute(current_city, next_city, route_index).transport_type;
-        std::cout << "当前时间 : " << current_time.GetDay() << " 日 " << current_time.GetHour() << "时" << std::endl;
+        City_id current_city = path.getNode(position).former_city;
+        City_id next_city = path.getNode(position).current_city;
+        int route_index = path.getNode(position).kth_way;
+        // Trans_id transport_type = city_graph.get_route(current_city, next_city, route_index).transport_type;
+        std::cout << "当前时间 : " << current_time.get_day() << " 日 " << current_time.get_hour() << "时" << std::endl;
         //PrintPath(city_graph, id_map, traveller.get_path(), traveller.get_position());
         PrintTravellerInfo(city_graph, id_map, current_time, traveller);
 
         ReadConsoleOutput(hStdOut, data_buffer, coordBufSize, coordBufCoord, &srctRect);
         WriteConsoleOutput(hOutBuf, data_buffer, coordBufSize, coordBufCoord, &srctRect);
 
-        traveller.UpdateState(city_graph);
+        traveller.updateState(city_graph);
         current_time.add_time(1);
         auto duration = Timer(count++);
         // std::cout << duration.count();
@@ -145,9 +145,9 @@ void Simulate(Traveller &traveller, const CityGraph &city_graph, const IDMap &id
         // std::cin >> click;
     }
     ClearScreen();
-    std::cout << "当前时间 : " << current_time.GetDay() << " 日 " << current_time.GetHour() << "时" << std::endl;
+    std::cout << "当前时间 : " << current_time.get_day() << " 日 " << current_time.get_hour() << "时" << std::endl;
     std::cout << "到达目的地" << std::endl;
-    PrintPath(city_graph, id_map, traveller.get_path(), traveller.get_path().GetLen());
+    PrintPath(city_graph, id_map, traveller.get_path(), traveller.get_path().get_len());
 
     SetConsoleActiveScreenBuffer(hStdOut);
     delete[] data_buffer;
@@ -170,14 +170,14 @@ void Simulate(Traveller &traveller, const CityGraph &city_graph, const IDMap &id
         Path path = traveller.get_path();
         int position = traveller.get_position();
 
-        City_id current_city = path.GetNode(position).former_city;
-        City_id next_city = path.GetNode(position).current_city;
-        int route_index = path.GetNode(position).kth_way;
-        Trans_id transport_type = city_graph.GetRoute(current_city, next_city, route_index).transport_type;
-        std::cout << "当前时间 : " << current_time.GetDay() << " 日 " << current_time.GetHour() << "时" << std::endl;
+        City_id current_city = path.getNode(position).former_city;
+        City_id next_city = path.getNode(position).current_city;
+        int route_index = path.getNode(position).kth_way;
+        Trans_id transport_type = city_graph.get_route(current_city, next_city, route_index).transport_type;
+        std::cout << "当前时间 : " << current_time.get_day() << " 日 " << current_time.get_hour() << "时" << std::endl;
         //PrintPath(city_graph, id_map, traveller.get_path(), traveller.get_position());
         PrintTravellerInfo(city_graph, id_map, current_time, traveller);
-        traveller.UpdateState(city_graph, current_time);
+        traveller.updateState(city_graph, current_time);
         current_time.add_time(1);
         auto duration = Timer(count++);
         // std::cout << duration.count();
@@ -186,9 +186,9 @@ void Simulate(Traveller &traveller, const CityGraph &city_graph, const IDMap &id
     }
 
     ClearScreen();
-    std::cout << "当前时间 : " << current_time.GetDay() << " 日 " << current_time.GetHour() << "时" << std::endl;
+    std::cout << "当前时间 : " << current_time.get_day() << " 日 " << current_time.get_hour() << "时" << std::endl;
     std::cout << "到达目的地" << std::endl;
-    PrintPath(city_graph, id_map, traveller.get_path(), traveller.get_path().GetLen());
+    PrintPath(city_graph, id_map, traveller.get_path(), traveller.get_path().get_len());
     Log::LogWrite("模拟结束");
 }
 #endif

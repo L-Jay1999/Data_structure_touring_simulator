@@ -19,7 +19,7 @@ class MyLabel : public QLabel
 public:
     explicit MyLabel(QWidget *parent = 0);
     void initializMyLabel(IDMap *a, QLabel *label1, QLabel *label2, QTextBrowser *browser);
-    std::vector <int> getplan();
+    std::vector <int> get_plan();
     void setOriginPixmap();
     bool hasOriginPixmap();
     bool has_origin(){if(where_mark_origin != -1)return true;else return false;}

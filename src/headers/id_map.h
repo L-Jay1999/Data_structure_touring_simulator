@@ -26,9 +26,9 @@ public:
 	// 给序号获得交通方式
     const std::string &getTransStr(Trans_id id) const { return trans_map_.at(id); }
 
-    std::map<int, std::string>::size_type getCityMapSize() const { return city_map_.size(); }
-    std::map<int, std::string>::size_type getTrainMapSize() const { return train_map_.size(); }
-    std::map<int, std::string>::size_type getTransMapSize() const { return trans_map_.size(); }
+    std::map<int, std::string>::size_type getCityMapSize() const noexcept { return city_map_.size(); }
+    std::map<int, std::string>::size_type getTrainMapSize() const noexcept { return train_map_.size(); }
+    std::map<int, std::string>::size_type getTransMapSize() const noexcept { return trans_map_.size(); }
 
 private:
 	static const std::string paths_[3];

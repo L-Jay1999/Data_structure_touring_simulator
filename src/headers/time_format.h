@@ -20,34 +20,34 @@ public:
 	}
 
 	// 获取当前时间与给定时间的差值,返回值为差值时间的拷贝(this - t)
-	Time time_diff(const Time &t) const;
+    Time time_diff(const Time &t) const noexcept;
 
 	// 将当前时间与给定时间相加,返回相加后时间的引用(改变了使用此方法的对象)
-	Time &add_time(const Time &t);
-	Time &add_time(const int hour, const int day = 0);
+    Time &add_time(const Time &t) noexcept;
+    Time &add_time(const int hour, const int day = 0) noexcept;
 
 	// 将当前时间与给定时间相减,返回相减后时间的引用(改变了使用此方法的对象)
-	Time &minus_time(const Time &t);
-	Time &minus_time(const int hour, const int day = 0);
+    Time &minus_time(const Time &t) noexcept;
+    Time &minus_time(const int hour, const int day = 0) noexcept;
 
 	// 获取当前时间与给定时间的差值,返回值为两者相差的小时数(this - t)
-	int hour_diff(const Time &) const;
+    int hour_diff(const Time &) const noexcept;
 
 	// 返回当前时间对应的小时数
-	int to_hour() const { return day_ * 24 + hour_; }
+    int to_hour() const noexcept { return day_ * 24 + hour_; }
 
-    int getDay() const { return day_; }
-    int getHour() const { return hour_; }
-    void reset() { hour_ = 0, day_ = 0; }               //重置
-    int getLength() const { return hour_ + day_ * 24; } //获得总时长
-    void set_hour(int hour) { hour_ = hour; }
+    int get_day() const noexcept { return day_; }
+    int get_hour() const noexcept { return hour_; }
+    void reset() noexcept { hour_ = 0, day_ = 0; }               //重置
+    int get_length() const noexcept { return hour_ + day_ * 24; } //获得总时长
+    void set_hour(int hour) noexcept { hour_ = hour; }
 
 #ifdef TEST_TIME
 #include <iostream>
 	std::ostream &print(std::ostream &os = std::cout) const
 	{
-		os << "日期是: " << GetDay()
-			<< "\t时间是: " << GetHour();
+        os << "日期是: " << get_day()
+            << "\t时间是: " << get_hour();
 		return os;
 }
 #endif // TEST_TIME

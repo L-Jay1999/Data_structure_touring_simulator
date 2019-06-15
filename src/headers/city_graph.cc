@@ -80,10 +80,10 @@ void CityGraph::show(City_id former_city, City_id current_city, int k) const
     if (former_city != current_city)
     {
         std::cout << former_city << ' ' << current_city << ' ' << k << ' '
-                  << city_[former_city][current_city].at(k).start_time.getDay() << ' '
-                  << city_[former_city][current_city].at(k).start_time.getHour() << ' '
-                  << city_[former_city][current_city].at(k).end_time.getDay() << ' '
-                  << city_[former_city][current_city].at(k).end_time.getHour() << ' '
+                  << city_[former_city][current_city].at(k).start_time.get_day() << ' '
+                  << city_[former_city][current_city].at(k).start_time.get_hour() << ' '
+                  << city_[former_city][current_city].at(k).end_time.get_day() << ' '
+                  << city_[former_city][current_city].at(k).end_time.get_hour() << ' '
                   << city_[former_city][current_city].at(k).price << std::endl;
     }
     else

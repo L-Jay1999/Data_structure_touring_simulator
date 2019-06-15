@@ -30,7 +30,7 @@ public:
     Path &append(const Path &path);
     void remove(const CityGraph &graph);
     // 固定路径的出发与结束点
-    void fix()
+    void fix() noexcept
     {
         if (len_)
         {
@@ -53,13 +53,13 @@ public:
     void show() const;
 
     //获取路径长度
-    int getLen() const { return len_; }
+    int get_len() const noexcept { return len_; }
 
     //获取路径总价
-    int getTotalPrice() const { return total_price_; }
+    int get_total_price() const noexcept { return total_price_; }
 
     //获取总时间
-    const Time &getTotalTime() const { return total_timecost_; }
+    const Time &get_total_time() const noexcept { return total_timecost_; }
 
     // 返回指向路径第首个元素的迭代器(危险,必须确保使用时该对象依然存在)
     std::deque<PathNode>::const_iterator cbegin() const { return cities_.cbegin(); }

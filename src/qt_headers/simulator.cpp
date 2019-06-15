@@ -21,13 +21,14 @@ void Simulator::initialize(QLCDNumber *lcd1, QLCDNumber *lcd2, MyMap *map, QLabe
 
 void Simulator::ready_for_simulate()
 {
-    display_day_ = map_->traveller_->get_init_time().getDay() + 1;
-    display_hour_ = map_->traveller_->get_init_time().getHour();
+    display_day_ = map_->traveller_->get_init_time().get_day() + 1;
+    display_hour_ = map_->traveller_->get_init_time().get_hour();
     day_LCD_->display(display_day_);
     hour_LCD_->display(display_hour_);
     //qDebug() << simulate_onehour_s_ << display_interval_ms_ << flush_per_hour_;
     map_->ready_for_simulate();
     display_label_->setText(QString::fromStdString(idmap_->getCityStr(map_->traveller_path_.getNode(0).former_city)));
+    reset();
 }
 
 void Simulator::set_flush_rate(int simulate_onehour_s_, int display_interval_ms_)
@@ -64,7 +65,7 @@ void Simulator::onTimerOut()
             {
                 current_pathnode_++;
 
-                if (current_pathnode_ == map_->traveller_path_.getLen())
+                if (current_pathnode_ == map_->traveller_path_.get_len())
                 {
                     display_label_->setText(QString::fromStdString(idmap_->getCityStr(map_->traveller_path_.getNode(current_pathnode_-1).current_city)));
                     timer_.stop();
@@ -127,8 +128,8 @@ void Simulator::reset()
     if (is_start_ || is_finished_)
     {
         timer_.stop();
-        display_day_ = map_->traveller_->get_init_time().getDay() + 1;
-        display_hour_ = map_->traveller_->get_init_time().getHour();
+        display_day_ = map_->traveller_->get_init_time().get_day() + 1;
+        display_hour_ = map_->traveller_->get_init_time().get_hour();
         day_LCD_->display(display_day_);
         hour_LCD_->display(display_hour_);
         display_label_->setText(QString::fromStdString(idmap_->getCityStr(map_->traveller_path_.getNode(0).former_city)));

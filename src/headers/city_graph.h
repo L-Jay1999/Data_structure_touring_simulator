@@ -30,10 +30,10 @@ public:
   void show(City_id former_city, City_id current_city, int k) const;
 
   //获得存储在ijk的Route
-  const Route &getRoute(City_id former_city, City_id current_city, int k) const { return city_[former_city][current_city].at(k); }
+  const Route &get_route(City_id former_city, City_id current_city, int k) const { return city_[former_city][current_city].at(k); }
 
   //获得city[i][j]的大小
-  int getSize(City_id i, City_id j) const { return city_[i][j].size(); }
+  int get_size(City_id i, City_id j) const noexcept { return city_[i][j].size(); }
 
 #ifdef TEST_CG
 

@@ -88,11 +88,11 @@ void MyMap::reset_image(int i)
 {
     PathNode first_node;
     if (i == -1)
-        first_node = traveller_path_.getNode(traveller_path_.getLen() - 1);
+        first_node = traveller_path_.getNode(traveller_path_.get_len() - 1);
     else
         first_node = traveller_path_.getNode(i);
 
-    Trans_id type = citygraph_->getRoute(first_node.former_city, first_node.current_city, first_node.kth_way).transport_type;
+    Trans_id type = citygraph_->get_route(first_node.former_city, first_node.current_city, first_node.kth_way).transport_type;
     int first_x, first_y;
     if (i == -1)
     {

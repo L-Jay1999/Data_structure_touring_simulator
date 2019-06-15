@@ -3,7 +3,7 @@
 
 class Traveller;
 
-void setTravellerPtr(Traveller *traveller);
+void setTravellerPtr(Traveller *traveller) noexcept;
 
 void SaveDataOnExit();
 

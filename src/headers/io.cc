@@ -472,16 +472,16 @@ Strategy InputStrategy(Time &init_time, Time &limit_time)
         {
         case 0:
             init_time = InputInitTime();
-            Log::LogWrite(std::string("起始时间: ") + std::to_string(init_time.getHour()) + " 旅行策略: 最少价格");
+            Log::LogWrite(std::string("起始时间: ") + std::to_string(init_time.get_hour()) + " 旅行策略: 最少价格");
             return LEAST_MONEY;
         case 1:
             init_time = InputInitTime();
-            Log::LogWrite(std::string("起始时间: ") + std::to_string(init_time.getHour()) + " 旅行策略: 最少时间");
+            Log::LogWrite(std::string("起始时间: ") + std::to_string(init_time.get_hour()) + " 旅行策略: 最少时间");
             return LEAST_TIME;
         case 2:
             init_time = InputInitTime();
             limit_time = InputLimitTime();
-            Log::LogWrite(std::string("起始时间: ") + std::to_string(init_time.getHour()) + "限定时间: " + std::to_string(init_time.getLength()) + "小时 " + " 旅行策略: 限定时间内最小价格");
+            Log::LogWrite(std::string("起始时间: ") + std::to_string(init_time.get_hour()) + "限定时间: " + std::to_string(init_time.get_length()) + "小时 " + " 旅行策略: 限定时间内最小价格");
             return LIMIT_TIME;
         default:
             ErrorMsg("无效的输入，请重新输入");
@@ -577,7 +577,7 @@ std::ostream &PrintPath(const CityGraph &graph, const IDMap &id_map, const Path 
         int i = path.getNode(path_node).former_city;
         int j = path.getNode(path_node).current_city;
         int k = path.getNode(path_node).kth_way;
-        Route route = graph.getRoute(i, j, k);
+        Route route = graph.get_route(i, j, k);
         auto former_city_str = id_map.getCityStr(i);
         auto current_city_str = id_map.getCityStr(j);
         std::cout << former_city_str << wrap[former_city_str.size() > comp.size()]
@@ -588,12 +588,12 @@ std::ostream &PrintPath(const CityGraph &graph, const IDMap &id_map, const Path 
                   << "O" << '\t' << std::endl;
     }
 
-    for (int path_node = index; path_node < path.getLen(); path_node++)
+    for (int path_node = index; path_node < path.get_len(); path_node++)
     {
         int i = path.getNode(path_node).former_city;
         int j = path.getNode(path_node).current_city;
         int k = path.getNode(path_node).kth_way;
-        Route route = graph.getRoute(i, j, k);
+        Route route = graph.get_route(i, j, k);
         auto former_city_str = id_map.getCityStr(i);
         auto current_city_str = id_map.getCityStr(j);
         std::cout << former_city_str << wrap[former_city_str.size() > comp.size()]
@@ -605,8 +605,8 @@ std::ostream &PrintPath(const CityGraph &graph, const IDMap &id_map, const Path 
     }
     if (showtotal)
     {
-        std::cout << "总价格花费：" << path.getTotalPrice() << std::endl;
-        std::cout << "总时间花费：" << path.getTotalTime().getLength() << "h" << std::endl;
+        std::cout << "总价格花费：" << path.get_total_price() << std::endl;
+        std::cout << "总时间花费：" << path.get_total_time().get_length() << "h" << std::endl;
     }
     return os;
 }
@@ -807,7 +807,7 @@ void PrintRoutes(const CityGraph &graph, const IDMap &id_map)
         }
     }
     Log::LogWrite(std::string("获取从 ") + id_map.getCityStr(start_city) + " 到 " + id_map.getCityStr(target_city) + " 的路线");
-    int size = graph.getSize(start_city, target_city);
+    int size = graph.get_size(start_city, target_city);
     if (!size)
     {
         std::cout << "两城市间无路线" << std::endl;
@@ -828,7 +828,7 @@ void PrintRoutes(const CityGraph &graph, const IDMap &id_map)
 
         for (int k = 0; k < size; k++)
         {
-            Route route = graph.getRoute(start_city, target_city, k);
+            Route route = graph.get_route(start_city, target_city, k);
 
             std::string cityi = id_map.getCityStr(start_city);
             std::string cityj = id_map.getCityStr(target_city);
@@ -838,7 +838,7 @@ void PrintRoutes(const CityGraph &graph, const IDMap &id_map)
                       << cityi << wrap[cityi.size() > comp.size()]
                       << cityj << wrap[cityj.size() > comp.size()]
                       << method << '\t';
-            RouteShow(route.start_time, route.end_time);
+            std::cout << RouteShow(route.start_time, route.end_time);
             std::cout << route.price << '\t' << std::endl;
         }
     }

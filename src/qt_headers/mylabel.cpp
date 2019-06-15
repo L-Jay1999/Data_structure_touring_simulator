@@ -1,18 +1,21 @@
 ﻿#ifndef SRC_MYLABEL
 #define SRC_WYLABEL
-
 #pragma execution_character_set("utf-8")
 
-#include "mylabel.h"
 #include <QMouseEvent>
 #include <QDebug>
 #include <QPixmap>
 #include <QString>
 #include <QMessageBox>
-#include <cmath>
 #include <QResizeEvent>
+
+#include <cmath>
 #include <deque>
-#include <windows.h>
+#include <algorithm>
+#include <thread>
+#include <chrono>
+
+#include "mylabel.h"
 
 static const double r_city = 10; //半径
 
@@ -41,12 +44,12 @@ void MyLabel::mouseMoveEvent(QMouseEvent *ev)
     int i = judge_mouse_pos();
     if (i != -1)
     {
-        Sleep(400);
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
         setToolTip(QString::fromStdString(idmap->getCityStr(i)));
     }
     else
     {
-        setToolTip(NULL);
+        setToolTip(nullptr);
     }
 }
 
@@ -81,7 +84,7 @@ void MyLabel::mousePressEvent(QMouseEvent *ev)
         int i = judge_mouse_pos();
         //qDebug() << i;
         //if(i!=-1)
-        //temp = QString::fromStdString(idmap->GetCityStr(i));
+        //temp = QString::fromStdString(idmap->getCityStr(i));
         //qDebug() << temp;
         if (i != -1 && where_mark_destination != i && where_mark_origin != i && !has_mark_transfer[i])
         {
@@ -172,7 +175,7 @@ void MyLabel::delete_transfer_city(int i)
     }
 }
 
-std::vector<int> MyLabel::getplan()
+std::vector<int> MyLabel::get_plan()
 {
     std::vector<int> temp;
     temp.push_back(where_mark_origin);

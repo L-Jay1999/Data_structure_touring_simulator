@@ -22,14 +22,14 @@ class Traveller // 旅行者
 public:
     Traveller() = default;
     Traveller(const std::string &id) : id_(id) {}
-    Traveller(std::string &&id) : id_(std::move(id)) {}
+    Traveller(std::string &&id) noexcept : id_(std::move(id)) {}
 
     // 显示旅客id
-    const std::string &get_ID() const { return id_; }
+    const std::string &get_ID() const noexcept { return id_; }
     void set_id(const std::string &name) { id_ = name; }
 
     // 打印旅客路径
-    const Path &get_path() const { return touring_path_; }
+    const Path &get_path() const noexcept { return touring_path_; }
 
     // 为旅客计划一条路径
     Path schedulePath(const CityGraph &graph, const std::vector<City_id> &plan, Strategy s, Time t = Time(), Time limit = Time());
@@ -39,7 +39,7 @@ public:
     }
 
     // 设置旅行路径
-    void set_path(Path &path)
+    void set_path(Path &path) noexcept
     {
         touring_path_ = path;
         position_pathnode_ = -1;
@@ -50,7 +50,7 @@ public:
 
     const std::vector<City_id> &get_plan() const { return travelling_plan_; }
 
-    void set_plan(std::vector<City_id> &&plan) { travelling_plan_ = std::move(plan); }
+    void set_plan(std::vector<City_id> &&plan) noexcept { travelling_plan_ = std::move(plan); }
     void set_plan(const std::vector<City_id> &plan) { travelling_plan_ = plan; }
     void set_plan(const std::initializer_list<City_id> &il) { travelling_plan_ = std::vector<City_id>(il); }
 
@@ -60,9 +60,9 @@ public:
 
     void append_plan(City_id city) { travelling_plan_.push_back(city); }
 
-    int get_position() const { return position_pathnode_; }
+    int get_position() const noexcept { return position_pathnode_; }
 
-    int get_left_hour() const { return next_city_hour_left_; }
+    int get_left_hour() const noexcept { return next_city_hour_left_; }
     int get_off_hours(const CityGraph &graph, int cnt);
     int get_stay_hours(const CityGraph &graph, int cnt);
 
@@ -71,11 +71,12 @@ public:
     void updateState(const CityGraph &graph);
     TravellerState get_state() const { return state_; }
 
-    void set_strategy(Strategy strategy) { strategy_ = strategy; }
-    bool set_strategy(int strategy) { strategy_ = static_cast<Strategy>(strategy); }
+    void set_strategy(Strategy strategy) noexcept { strategy_ = strategy; }
+    void set_strategy(int strategy) noexcept { strategy_ = static_cast<Strategy>(strategy); }
+    Strategy get_strategy() const noexcept { return strategy_;}
 
-    void set_init_time(const Time &t) { init_time_ = t; }
-    const Time &get_init_time() const { return init_time_; }
+    void set_init_time(const Time &t) noexcept { init_time_ = t; }
+    const Time &get_init_time() const noexcept { return init_time_; }
 
 private:
     std::string id_;                       // 旅客id

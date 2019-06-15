@@ -16,7 +16,7 @@
 static Traveller *p_traveller = nullptr;
 static bool saved = false;
 
-void setTravellerPtr(Traveller *traveller)
+void setTravellerPtr(Traveller *traveller) noexcept
 {
     p_traveller = traveller;
 }
