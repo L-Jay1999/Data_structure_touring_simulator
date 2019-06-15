@@ -28,6 +28,7 @@ void Simulator::ready_for_simulate()
     //qDebug() << simulate_onehour_s_ << display_interval_ms_ << flush_per_hour_;
     map_->ready_for_simulate();
     display_label_->setText(QString::fromStdString(idmap_->getCityStr(map_->traveller_path_.getNode(0).former_city)));
+    reset();
 }
 
 void Simulator::set_flush_rate(int simulate_onehour_s_, int display_interval_ms_)

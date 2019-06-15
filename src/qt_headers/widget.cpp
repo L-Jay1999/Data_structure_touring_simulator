@@ -109,6 +109,8 @@ void Widget::on_StatePageButton_released() // 状态查询
     auto plan = traveller_widget.get_plan();
     auto path = traveller_widget.get_path();
     auto position = traveller_widget.get_position();
+    int strategy = traveller_widget.get_strategy();
+    std::string strategy_str_array[] = {"最少金钱", "最少时间", "限定时间最少金钱"};
 
     ui->state_user_name_content->setText(QString::fromStdString(traveller_widget.get_ID()));
     if (position == -2)
@@ -118,7 +120,7 @@ void Widget::on_StatePageButton_released() // 状态查询
         ui->state_pass_content->setText(empty_plan_qstr);
         ui->state_time_content->setText(empty_plan_qstr);
         ui->state_price_content->setText(empty_plan_qstr);
-        ui->state_position_content->setText(empty_plan_qstr);
+        ui->state_strategy_content->setText(empty_plan_qstr);
         return;
     }
     else
@@ -142,14 +144,7 @@ void Widget::on_StatePageButton_released() // 状态查询
         ui->state_time_content->setNum(path.get_total_time().get_length());
         ui->state_price_content->setNum(path.get_total_price());
 
-        if (position == -1)
-        {
-            ui->state_position_content->setText(empty_plan_qstr);
-        }
-        else
-        {
-            ui->state_position_content->setText(QString::fromStdString(idmap_widget.getCityStr(path.getNode(position).former_city)));
-        }
+        ui->state_strategy_content->setText(QString::fromStdString(strategy_str_array[strategy]));
     }
 
     ui->stateTableWidget->setRowCount(path.get_len());
@@ -353,6 +348,7 @@ void Widget::on_OrderPathButton_released()
             }
             traveller_widget.set_path(p);
         }
+        traveller_widget.set_strategy(s);
         QMessageBox::information(this, "Success!", "已预定行程", QMessageBox::Ok);
         Log::LogWrite("成功预定行程");
     }

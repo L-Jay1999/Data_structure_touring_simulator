@@ -72,7 +72,8 @@ public:
     TravellerState get_state() const { return state_; }
 
     void set_strategy(Strategy strategy) noexcept { strategy_ = strategy; }
-    bool set_strategy(int strategy) noexcept { strategy_ = static_cast<Strategy>(strategy); }
+    void set_strategy(int strategy) noexcept { strategy_ = static_cast<Strategy>(strategy); }
+    Strategy get_strategy() const noexcept { return strategy_;}
 
     void set_init_time(const Time &t) noexcept { init_time_ = t; }
     const Time &get_init_time() const noexcept { return init_time_; }

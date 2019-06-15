@@ -522,14 +522,14 @@ border-color: rgb(255, 255, 255);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="state_position_label">
+          <widget class="QLabel" name="state_strategy_label">
            <property name="text">
-            <string>当前城市:</string>
+            <string>旅行策略:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="state_position_content">
+          <widget class="QLabel" name="state_strategy_content">
            <property name="text">
             <string>TextLabel</string>
            </property>
